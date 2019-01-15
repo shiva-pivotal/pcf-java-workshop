@@ -1,0 +1,54 @@
+= Lab 0 - Accessing the Workshop Environment
+
+== CF CLI Target and Log In
+
+. If you haven't already, download the latest release of the Cloud Foundry CLI from https://github.com/cloudfoundry/cli/releases for your operating system and install it.
+
+. Set the API target for the CLI:
++
+----
+$ cf api --skip-ssl-validation https://api.<DOMAIN_PROVIDED_BY_INSTRUCTOR>
+----
+
+. Login to Pivotal Cloud Foundry:
++
+----
+$ cf login
+----
++
+Follow the prompts, entering in the student credentials provided by the instructor and choosing the your space.
++
+====
+----
+> cf login
+API endpoint: https://api.dev.sys.pcfonemagnify.com
+
+Email> student-1
+
+Password>
+Authenticating...
+OK
+
+Targeted org student-1
+
+Targeted space student-1
+
+
+API endpoint:   https://api.dev.sys.pcfonemagnify.com (API version: 2.75.0)
+User:           student-1
+Org:            student-1
+Space:          student-1
+
+----
+====
+
+== AppsManager Log In
+
+. Log In to Apps Manager URL: https://apps.dev.sys.pcfonemagnify.com. Click on the 'LOG IN'link in the upper right corner. Use the same username and password you entered when using the CF CLI
++
+image::../../Common/images/lab-student-login.png[]  
+
+. Post Log In Screen:
+
++
+image::../../Common/images/lab-student-logged-in.png[]
