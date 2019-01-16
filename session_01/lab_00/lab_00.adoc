@@ -34,7 +34,7 @@ Targeted org student-1
 Targeted space student-1
 
 
-API endpoint:   https://api.dev.sys.pcfonemagnify.com (API version: 2.75.0)
+API endpoint:   https://api.dev.sys.pcfonemagnify.com (API version: 2.112.0)
 User:           student-1
 Org:            student-1
 Space:          student-1
@@ -46,7 +46,7 @@ Space:          student-1
 
 . Log In to Apps Manager URL: https://apps.dev.sys.pcfonemagnify.com. Click on the 'LOG IN'link in the upper right corner. Use the same username and password you entered when using the CF CLI
 +
-image::../../Common/images/lab-student-login.png[]  
+image::../../Common/images/lab-student-login-screen.png[]  
 
 . Post Log In Screen:
 
