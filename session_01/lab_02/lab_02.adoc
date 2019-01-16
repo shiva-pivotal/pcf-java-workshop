@@ -6,13 +6,15 @@ Pivotal Cloudfoundry makes the work of performing operations actions, such as sc
 In the next two labs we'll explore Pivotal Cloud Foundry operations.
 --
 
-== Scale the Application Up
+== Scale Horizontally
+
+=== Scale the Application Out
 
 . Now let's increase the number of running application instances to 3.  :
 +
 ----
-> cf scale paragdoshi-articulate -i 3
-Scaling app paragdoshi-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
+> cf scale shiva-articulate -i 3
+Scaling app shiva-articulate in org shiva-pcf-poc / space development as shreddy@pivotal.io...
 OK
 
 ----
@@ -23,22 +25,24 @@ In reporting `OK`, the CLI is letting you know that the additional requested ins
 +
 ====
 ----
-> cf app paragdoshi-articulate
-Showing health and status for app paragdoshi-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
-OK
+> cf app shiva-articulate
+Showing health and status for app shiva-articulate in org shiva-pcf-poc / space development as shreddy@pivotal.io...
 
-requested state: started
-instances: 3/3
-usage: 1G x 3 instances
-urls: paragdoshi-articulate.cfapps.io
-last uploaded: Mon Apr 3 17:02:55 UTC 2017
-stack: cflinuxfs2
-buildpack: container-certificate-trust-store=2.0.0_RELEASE java-buildpack=v3.14-offline-https://github.com/cloudfoundry/java-buildpack.git#d5d58c6 java-main open-jdk-like-jre=1.8.0_121 open-jdk-like-memory-calculator=2.0.2_RELEASE spring-auto-reconfiguration=1.10...
+name:              shiva-articulate
+requested state:   started
+routes:            shiva-articulate.cfapps.io
+last uploaded:     Tue 15 Jan 20:03:14 EST 2019
+stack:             cflinuxfs2
+buildpacks:        client-certificate-mapper=1.8.0_RELEASE container-security-provider=1.16.0_RELEASE java-buildpack=v4.17.1-offline-https://github.com/cloudfoundry/java-buildpack.git#47e68da
+                   java-main java-opts java-security jvmkill-agent=1.16.0_RELEASE open-jd...
 
-     state     since                    cpu      memory         disk           details
-#0   running   2017-04-03 01:04:52 PM   0.1%     442.9M of 1G   154.6M of 1G
-#1   running   2017-04-03 02:46:56 PM   212.4%   459.9M of 1G   154.6M of 1G
-#2   running   2017-04-03 02:46:52 PM   1.4%     434.5M of 1G   154.6M of 1G
+type:           web
+instances:      3/3
+memory usage:   2048M
+     state     since                  cpu      memory         disk           details
+#0   running   2019-01-16T01:03:41Z   0.5%     674.4M of 2G   163.9M of 1G
+#1   running   2019-01-16T01:29:17Z   0.6%     695.7M of 2G   163.9M of 1G
+#2   running   2019-01-16T01:29:30Z   131.1%   663M of 2G     163.9M of 1G
 >
 ----
 ====
@@ -55,13 +59,13 @@ As an instance reaches the `running` state, its https://docs.pivotal.io/pivotalc
 All (Go)Router instances are subscribed to this channel and register the routes independently.
 This makes for very dynamic and rapid reconfiguration!
 
-== Scale the Application Down
+=== Scale the Application In
 
 . We can scale the application instances back down as easily as we scaled them up, using the same command structure:
 +
 ----
-> cf scale paragdoshi-articulate -i 1
-Scaling app paragdoshi-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
+> cf scale shiva-articulate -i 1
+Scaling app shiva-articulate in org shiva-pcf-poc / space development as shreddy@pivotal.io...
 OK
 
 ----
@@ -69,21 +73,22 @@ OK
 . Check the application status again:
 +
 ----
-> cf app paragdoshi-articulate
-Showing health and status for app paragdoshi-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
-OK
+> cf app shiva-articulate
+Showing health and status for app shiva-articulate in org shiva-pcf-poc / space development as shreddy@pivotal.io...
 
-requested state: started
-instances: 1/1
-usage: 1G x 1 instances
-urls: paragdoshi-articulate.cfapps.io
-last uploaded: Mon Apr 3 17:02:55 UTC 2017
-stack: cflinuxfs2
-buildpack: container-certificate-trust-store=2.0.0_RELEASE java-buildpack=v3.14-offline-https://github.com/cloudfoundry/java-buildpack.git#d5d58c6 java-main open-jdk-like-jre=1.8.0_121 open-jdk-like-memory-calculator=2.0.2_RELEASE spring-auto-reconfiguration=1.10...
+name:              shiva-articulate
+requested state:   started
+routes:            shiva-articulate.cfapps.io
+last uploaded:     Tue 15 Jan 20:03:14 EST 2019
+stack:             cflinuxfs2
+buildpacks:        client-certificate-mapper=1.8.0_RELEASE container-security-provider=1.16.0_RELEASE java-buildpack=v4.17.1-offline-https://github.com/cloudfoundry/java-buildpack.git#47e68da
+                   java-main java-opts java-security jvmkill-agent=1.16.0_RELEASE open-jd...
 
-     state     since                    cpu    memory         disk           details
-#0   running   2017-04-03 01:04:52 PM   0.3%   448.1M of 1G   154.6M of 1G
-
+type:           web
+instances:      1/1
+memory usage:   2048M
+     state     since                  cpu    memory         disk           details
+#0   running   2019-01-16T01:03:41Z   0.5%   676.2M of 2G   163.9M of 1G
 ----
 +
 As you can see, we're back down to only one instance running, and it is in fact the original index 0 that we started with.
@@ -91,6 +96,66 @@ As you can see, we're back down to only one instance running, and it is in fact 
 . Confirm that by again revisiting the route in the browser and checking the instance index:
 +
 image::../../Common/images/lab-scale-down.png[]
+
+== Scale Vertically
+
+=== Scale the Application Up 
+
+. Now let's increase the memory of application to 2G.  :
++
+----
+> cf scale shiva-articulate -m 2G
+
+This will cause the app to restart. Are you sure you want to scale shiva-articulate?> y
+
+Scaling app shiva-articulate in org shiva-pcf-poc / space development as shreddy@pivotal.io...
+OK
+Stopping app shiva-articulate in org shiva-pcf-poc / space development as shreddy@pivotal.io...
+OK
+
+Starting app shiva-articulate in org shiva-pcf-poc / space development as shreddy@pivotal.io...
+
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+1 of 1 instances running
+
+App started
+
+OK
+
+App shiva-articulate was started using this command `JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.16.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -XX:ActiveProcessorCount=$(nproc) -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.13.0_RELEASE -totMemory=$MEMORY_LIMIT -loadedClasses=18499 -poolType=metaspace -stackThreads=250 -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && MALLOC_ARENA_MAX=2 SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher`
+
+Showing health and status for app shiva-articulate in org shiva-pcf-poc / space development as shreddy@pivotal.io...
+OK
+
+requested state: started
+instances: 1/1
+usage: 2G x 1 instances
+urls: shiva-articulate.cfapps.io
+last uploaded: Wed Jan 16 01:02:42 UTC 2019
+stack: cflinuxfs2
+buildpack: client-certificate-mapper=1.8.0_RELEASE container-security-provider=1.16.0_RELEASE java-buildpack=v4.17.1-offline-https://github.com/cloudfoundry/java-buildpack.git#47e68da java-main java-opts java-security jvmkill-agent=1.16.0_RELEASE open-jd...
+
+     state     since                    cpu      memory         disk           details
+#0   running   2019-01-15 09:10:45 PM   219.3%   578.2M of 2G   163.9M of 1G
+>
+----
+
+=== Scale the Application Down
+
+. We can scale the application memory back down as easily as we scaled them up, using the same command structure:
++
+----
+> cf scale shiva-articulate -m 1G
+Scaling app shiva-articulate in org shiva-pcf-poc / space development as shreddy@pivotal.io...
+OK
+----
+
+=== Questions
+
+* How long does it take to scale up or out applications now?
 
 == Auto Scaling
 
@@ -177,8 +242,15 @@ image::../../Common/images/removed-route.png[]
 +
 image::../../Common/images/v2-route-traffic.png[]
 
+*Congratulations!* You performed a blue-green deployment.
+
+=== Questions
+* How would a rollback situation be handled using a blue-green deployment?
+* What other design implications does running at least two versions at the same time have on your applications?
+* Do you do blue-green deployments today? How is this different?
+
 == Clean Up
 
 . Delete the v2 articulate app - Navigate to v2 articulate app and click on 'Settings'. Scroll down to the end of the page and there will be a 'Delete App' button. Click on it, re-confirm the delete and this will delete v2 articulate app.
 
-. Re-add the orgiinal route back to your previous articulate app so that it is again accessible with that route. In my case, the route name was paragdoshi-articulate. Click on the route and make sure your app is accessible again.
+. Re-add the orgiinal route back to your previous articulate app so that it is again accessible with that route. In my case, the route name was shiva-articulate. Click on the route and make sure your app is accessible again.

@@ -20,7 +20,7 @@ Application developers can view application logs using the CF CLI.
 . Let's view recent log messages for the application.
 +
 ----
-> cf logs paragdoshi-articulate --recent
+> cf logs shiva-articulate --recent
 ----
 +
 Here are some interesting subsets of one output from that command:
@@ -28,8 +28,8 @@ Here are some interesting subsets of one output from that command:
 .CF Component Logs
 ====
 ----
-> cf logs paragdoshi-articulate --recent
-Connected, dumping recent logs for app paragdoshi-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
+> cf logs shiva-articulate --recent
+Connected, dumping recent logs for app shiva-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
 
 2017-04-03T13:04:50.21-0400 [APP/PROC/WEB/0]OUT 2017-04-03 17:04:50.212  INFO 14 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 2017-04-03T13:04:50.21-0400 [APP/PROC/WEB/0]OUT 2017-04-03 17:04:50.215  INFO 14 --- [           main] i.p.e.articulate.ArticulateApplication   : Started ArticulateApplication in 11.981 seconds (JVM running for 13.001)
@@ -52,7 +52,7 @@ These events are properly interwoven based on time, giving you an accurate pictu
 . To get a running ``tail'' of the application logs rather than a dump, simply type:
 +
 ----
-> cf logs paragdoshi-articulate
+> cf logs shiva-articulate
 ----
 +
 You can try various things like refreshing the browser and triggering stop/start events to see logs being generated.
@@ -64,8 +64,8 @@ Cloud Foundry's https://docs.pivotal.io/pivotalcf/1-9/concepts/architecture/#nsy
 . If you don't have one already running, start a log tail for your articulate application. 
 +
 ----
-> cf logs paragdoshi-articulate
-Connected, tailing logs for app paragdoshi-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
+> cf logs shiva-articulate
+Connected, tailing logs for app shiva-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
 ----
 
 . If you do not have more than one application instance running, execute the scale command to scale to 2 or more application instances.  Visit the application in the browser, click on 'Scale & HA' link and click on the `Kill' button. This button will trigger an Environment.Exit(-1) causing the Health Manager to observe an application instance crash:
@@ -133,8 +133,8 @@ Take a look at the events that have transpired so far for our deployment of `wor
 
 ====
 ----
-> cf events paragdoshi-articulate
-Getting events for app paragdoshi-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
+> cf events shiva-articulate
+Getting events for app shiva-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
 
 time                          event                   actor                   description
 2017-04-04T18:36:48.00-0400   audit.app.process.crash   web                   index: 0, reason: CRASHED, exit_description: 2 error(s) occurred:
@@ -173,8 +173,8 @@ Here we see the `app.create` event, which created our application's record and s
 . Let's explicitly ask for the application to be stopped:
 +
 ----
-> cf stop paragdosh-articulate
-Stopping app paragdoshi-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
+> cf stop shiva-articulate
+Stopping app shiva-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
 OK
 
 ----
@@ -182,8 +182,8 @@ OK
 . Now, examine the additional `app.update` event:
 +
 ----
-> cf events paragdoshi-articulate
-Getting events for app paragdoshi-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
+> cf events shiva-articulate
+Getting events for app shiva-articulate in org PapaJohns / space workshop as pdoshi@pivotal.io...
 
 ttime                          event                     actor                   description
 2017-04-04T18:51:00.00-0400   audit.app.update          pdoshi@pivotal.io       state: STOPPED

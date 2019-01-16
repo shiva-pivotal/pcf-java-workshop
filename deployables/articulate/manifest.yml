@@ -1,6 +1,6 @@
 applications:
 - name: shiva-articulate
-  path: ./pcf-ers-demo1-0.0.1-SNAPSHOT.jar
+  path: ./articulate-0.0.1-SNAPSHOT.jar
   instances: 1
   memory: 2G
   disk_quota: 1G

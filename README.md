@@ -22,26 +22,6 @@ Time | Session
 
 This is a _loose_ schedule for the day. We will adjust as necessary based on our pace through the material.
 
-**Prerequisites**
-- [Cloud Foundry CLI](https://console.run.pivotal.io/tools)
-- [Git Client](https://git-scm.com/downloads)
-
-**Verify the Prerequisites installation**
-``` 
-$ cf -v
-$ git -v 
-```
-
-## Getting started
-
-Start by downloading the course materials.  This can be accomplished either through the GitHub website or if you have Git installed, use the following commands:
-
-```
-$ git clone https://github.com/shiva-pivotal/pcf-java-workshop.git
-$ cd pcf-java-workshop/
-$ git fetch --all
-```
-
 ## Course Materials
 
 #### Session 1 [(Slides)](session_01/Session_1_Cloud_Native_Introduction.pdf): _Intro to Pivotal Cloud Foundry_
