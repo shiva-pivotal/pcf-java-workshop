@@ -25,7 +25,7 @@ This is a _loose_ schedule for the day. We will adjust as necessary based on our
 ## Course Materials
 
 #### Session 1 [(Slides)](session_01/Session_1_Cloud_Native_Introduction.pdf): _Intro to Pivotal Cloud Foundry_
-  - [Lab 0 - Accessing the Workshop Environment](session_01/lab_00/lab_00.adoc)
+  - [Lab 0 - Setup the Workshop Environment](session_01/lab_00/lab_00.adoc)
   - [Lab 1 - Pushing Your First Application](session_01/lab_01/lab_01.adoc)
   - [Lab 2 - Scaling, Auto Scaling and Zero Downtime Deployment Lab](session_01/lab_02/lab_02.adoc)
   - [Lab 3 - Monitoring, Metrics and HA Lab](session_01/lab_03/lab_03.adoc)

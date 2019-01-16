@@ -1,7 +1,7 @@
 applications:
-- name: shiva-articulate
+- name: changeMeToUniqueUsername-articulate-articulate
   path: ./articulate-0.0.1-SNAPSHOT.jar
   instances: 1
-  memory: 2G
+  memory: 1G
   disk_quota: 1G
   stack: cflinuxfs2
