@@ -178,7 +178,7 @@ $ cf restage shiva-articulate
 +
 Once the application is running again, revisit or refresh the browser tab where you have the _shiva-articulate_ application loaded:
 +
-image::screenshot-mysql.png[]
+image::screenshot-mysql-cleardb.png[]
 +
 As you can see from the `Application Environment Information` section, the application is now utilizing a MySQL database via the `shiva-articulate-db` service.
 +
